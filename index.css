@@ -26,6 +26,7 @@ body {
 }
 
 .cell {
+  cursor: pointer;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -35,6 +36,11 @@ body {
   height: 133px;
   width: 133px;
   border: 3px solid white;
+}
+
+.cell:hover {
+  background-color: rgb(33, 30, 30);
+
 }
 
 .circle {
