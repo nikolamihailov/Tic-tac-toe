@@ -1,0 +1,152 @@
+body {
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  margin: 0;
+}
+
+.board {
+  border: 3px solid white;
+  height: 399px;
+  width: 399px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.win {
+  pointer-events: none;
+}
+
+.cell {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 133px;
+  width: 133px;
+  border: 3px solid white;
+}
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  color: red;
+  border: 10px solid red;
+  /*box-shadow: 0 0 5px 9px rgb(148, 52, 52);*/
+  /*transition: box-shadow 0.5 linear;*/
+  animation-name: circle;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+
+}
+
+.cross {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 100px;
+  background-color: rgb(89, 169, 255);
+  top: -55px;
+  left: -5px;
+  border-radius: 2px;
+  /*box-shadow: 0 0 5px 9px lightskyblue;*/
+  /*transition: box-shadow 2s linear;*/
+  animation-name: cross;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+
+.cross::before {
+  transform: rotate(45deg);
+  right: 2px;
+}
+
+.cross::after {
+  transform: rotate(-45deg);
+  right: 2px;
+}
+
+@keyframes circle {
+  25% {
+    box-shadow: 0 0 2px 4px rgb(167, 19, 19);
+  }
+
+  60% {
+    box-shadow: 0 0 5px 10px rgb(167, 19, 19);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0;
+  }
+}
+
+@keyframes cross {
+  25% {
+    box-shadow: 0 0 2px 4px rgb(6, 67, 222);
+  }
+
+  60% {
+    box-shadow: 0 0 5px 10px rgb(6, 67, 222);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0;
+  }
+}
+
+h1 {
+  margin-bottom: 50px;
+  font-size: 35px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 50px;
+  width: 120px;
+  border-radius: 7px;
+  margin-top: 30px;
+}
+
+a:active {
+  scale: 0.95;
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 23px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
