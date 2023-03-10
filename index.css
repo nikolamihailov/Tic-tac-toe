@@ -211,6 +211,18 @@ button:active {
   border-radius: 20px;
 }
 
+.popup #close {
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 15px;
+  width: 15px;
+  font-size: 19px;
+}
+
 .hidden {
   display: none;
 }
