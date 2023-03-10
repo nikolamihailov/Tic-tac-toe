@@ -64,7 +64,7 @@ function makeShape(e) {
         if (!winner.classList.contains("hidden")) {
             info.innerText = ""
         } else {
-            info.innerText = `${start} turn`;
+            info.innerText = `${start}'s turn`;
         }
     }
 
@@ -105,7 +105,7 @@ function checkWin(e) {
     //console.log(idsCross);
 }
 
-info.innerText = "Circle turn";
+info.innerText = "Circle's turn";
 createBoard();
 const cellsElements = document.querySelectorAll(".cell");
 console.log(cellsElements);
@@ -116,7 +116,7 @@ function newGameF() {
     createBoard();
     ids = [];
     start = "circle";
-    info.innerText = "Circle turn";
+    info.innerText = "Circle's turn";
 }
 
 function removeAllChildren(element) {

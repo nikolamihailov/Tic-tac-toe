@@ -245,8 +245,12 @@ button:active {
 
   button {
     height: 40px;
-    width: 95px;
-    font-size: 15px;
+    width: 90px;
+    font-size: 14px;
+  }
+
+  .scores {
+    width: 100%;
   }
 
   .circleScore,
@@ -263,5 +267,6 @@ button:active {
   .popup {
     height: 180px;
     width: 230px;
+    font-size: 28px;
   }
 }
