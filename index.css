@@ -215,7 +215,7 @@ button:active {
   display: none;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   h1 {
     font-size: 28px;
   }
@@ -245,7 +245,7 @@ button:active {
 
   button {
     height: 40px;
-    width: 100px;
+    width: 95px;
     font-size: 15px;
   }
 
