@@ -1,1 +1,1 @@
-Try the game- https://github.com/nikolamihailov/Tic-tac-toe
+Try the game- https://nikolamihailov.github.io/Tic-tac-toe/
