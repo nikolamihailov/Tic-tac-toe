@@ -1,7 +1,17 @@
 const board = document.querySelector(".board");
 const info = document.querySelector(".info");
 const newGame = document.getElementById("newGame");
+let xScore = document.getElementById("X");
+let oScore = document.getElementById("O");
+const clearScore = document.querySelector(".clearScore");
+const winner = document.querySelector(".popup");
+let xScoreN = Number(xScore.innerText);
+let oScoreN = Number(oScore.innerText);
 
+clearScore.addEventListener("click", () => {
+    xScore.innerText = 0;
+    oScore.innerText = 0;
+})
 newGame.addEventListener("click", newGameF);
 let cells = ["", "", "", "", "", "", "", "", ""];
 let start = "circle";
@@ -38,37 +48,63 @@ function makeShape(e) {
         el.classList.add("cross");
         start = "circle";
     }
-    info.innerText = `${start} turn`;
+
+
     e.target.append(el);
     checkWin(e);
+    if (ids.length === 9 && !board.classList.contains("win")) {
+        if (!winner.classList.contains("hidden")) {
+            info.innerText = ""
+        } else {
+            winner.innerHTML = "It's a draw!!! <br> Nobody wins!";
+            winner.classList.remove("hidden");
+            setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
+        }
+    } else {
+        if (!winner.classList.contains("hidden")) {
+            info.innerText = ""
+        } else {
+            info.innerText = `${start} turn`;
+        }
+    }
 
     e.target.removeEventListener("click", makeShape)
 }
 function checkWin(e) {
-    let idsCircle = ids.slice();
-    let idsCross = ids.slice();
+    //let idsCircle = ids.slice();
+    // let idsCross = ids.slice();
     ids.push(Number(e.target.id));
-    idsCircle = ids.filter((value, index) => index % 2 === 0);
-    idsCross = ids.filter((value, index) => index % 2 !== 0);
+    let idsCircle = ids.filter((value, index) => index % 2 === 0);
+    let idsCross = ids.filter((value, index) => index % 2 !== 0);
 
     for (const winCombo of winningCombos) {
         if (idsCircle.toString().includes(`${winCombo[0].toString()}`)
             && idsCircle.toString().includes(`${winCombo[1].toString()}`)
             && idsCircle.toString().includes(`${winCombo[2].toString()}`)) {
-
-            info.innerText = "Circle wins!!!";
+            //info.innerText = "Circle wins!!!";
+            winner.innerHTML = "Circle wins!!! <br> Congrats!";
+            winner.classList.remove("hidden");
+            setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
             board.classList.add("win");
+            oScoreN++;
+            oScore.innerText = oScoreN;
         }
         if (idsCross.toString().includes(`${winCombo[0].toString()}`)
             && idsCross.toString().includes(`${winCombo[1].toString()}`)
             && idsCross.toString().includes(`${winCombo[2].toString()}`)) {
             board.classList.add("win");
-            info.innerText = "Cross wins!!!";
+            //info.innerText = "Cross wins!!!";
+            winner.innerHTML = "Cross wins!!! <br> Congrats!";
+            winner.classList.remove("hidden");
+            setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
+            xScoreN++;
+            xScore.innerText = xScoreN;
         }
     }
     // console.log(idsCircle);
     //console.log(idsCross);
 }
+
 info.innerText = "Circle turn";
 createBoard();
 const cellsElements = document.querySelectorAll(".cell");
@@ -76,10 +112,16 @@ console.log(cellsElements);
 
 function newGameF() {
     board.classList.remove("win");
-    while (board.firstChild) {
-        board.removeChild(board.lastChild);
-    }
+    removeAllChildren(board);
     createBoard();
+    ids = [];
     start = "circle";
     info.innerText = "Circle turn";
+}
+
+function removeAllChildren(element) {
+    while (element.firstChild) {
+        removeAllChildren(element.lastChild);
+        element.removeChild(element.lastChild);
+    }
 }

@@ -1,4 +1,5 @@
 body {
+  padding: 10px;
   text-align: center;
   box-sizing: border-box;
   display: flex;
@@ -19,6 +20,41 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.scores {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.circleScore,
+.crossScore {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 19px;
+}
+
+.circleScore {
+  color: white;
+  background-color: red;
+}
+
+.crossScore {
+  color: white;
+  background-color: blue;
+}
+
+#X,
+#O {
+  margin-left: 5px;
 }
 
 .win {
@@ -124,14 +160,15 @@ body {
 }
 
 h1 {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   font-size: 35px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-a {
-  text-decoration: none;
+button {
+  all: unset;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,10 +180,9 @@ a {
   height: 50px;
   width: 120px;
   border-radius: 7px;
-  margin-top: 30px;
 }
 
-a:active {
+button:active {
   scale: 0.95;
 }
 
@@ -155,4 +191,26 @@ a:active {
   font-size: 23px;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 42px;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  height: 250px;
+  width: 300px;
+  background: linear-gradient(to bottom, red, blue);
+  border-radius: 20px;
+}
+
+.hidden {
+  display: none;
 }
