@@ -11,6 +11,8 @@ let xScoreN = Number(xScore.innerText);
 let oScoreN = Number(oScore.innerText);
 
 clearScore.addEventListener("click", () => {
+    xScoreN = 0;
+    oScoreN = 0;
     xScore.innerText = 0;
     oScore.innerText = 0;
 });
