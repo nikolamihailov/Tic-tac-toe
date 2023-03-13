@@ -235,17 +235,14 @@ button:active {
   border-radius: 30px;
   animation-name: openLegend;
   animation-duration: 1s;
-}
-
-
-.rulesFeatures p {
   color: black;
   text-align: justify;
-  margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-family: cursive;
   font-style: oblique;
 }
+
+
 
 .hidden {
   display: none;
@@ -304,9 +301,9 @@ button:active {
 .infoAndLanguages img {
   margin-top: 3px;
   cursor: pointer;
-  border-radius: 10px;
-  height: 24px;
-  width: 24px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
 }
 
 .infoAndLanguages img:active {
@@ -392,16 +389,16 @@ button:active {
   }
 
   .showLegend {
-    height: 600px;
-    width: 310px;
+    height: 610px;
+    width: 320px;
     padding: 0 20px;
+    font-size: 13.5px;
+    text-align: justify;
   }
 
-  .rulesFeatures p {
-    text-align: justify;
-    font-size: 12px;
-    font-family: cursive;
-    font-style: oblique;
+  .showLegend h2 {
+    text-align: center;
+    font-size: 17px;
   }
 
   .popup {
