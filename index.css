@@ -241,6 +241,11 @@ button:active {
 
 }
 
+.closeLegend {
+  animation-name: closeLegend;
+  animation-duration: 1s;
+}
+
 
 
 .hidden {

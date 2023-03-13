@@ -42,6 +42,7 @@ changeLanguage.addEventListener("click", () => {
         gameHeading.innerHTML = "Tic tac toe <br>multiplayer";
         winsO.innerText = "O's wins:";
         winsX.innerText = "X's wins:";
+        info.innerText = `${start}'s turn`;
         rulesAndFeatures.innerHTML = `
        
         <p>
@@ -71,6 +72,7 @@ changeLanguage.addEventListener("click", () => {
         gameHeading.innerHTML = "Морски шах <br> за двама";
         winsO.innerText = "O победи:";
         winsX.innerText = "X победи:";
+        info.innerText = `Ред на ${startBg}`;
         rulesAndFeatures.innerHTML = `
       
         <p>
@@ -100,11 +102,15 @@ closePopup.addEventListener("click", () => {
 });
 closeInfo.addEventListener("click", () => {
     legendInfo.classList.add("closeLegend");
-    legendInfo.classList.add("hidden");
+    setTimeout(() => {
+        legendInfo.classList.add("hidden"); // Hide the element after the animation is complete
+        legendInfo.classList.remove("closeLegend"); // Remove the class for closing animation
+    }, 1000);
 });
 let cells = ["", "", "", "", "", "", "", "", ""];
 
 let start = "circle";
+let startBg = "кръг";
 function createBoard() {
     cells.forEach((value, index) => {
         let cellEl = document.createElement("div");
@@ -124,13 +130,17 @@ let winningCombos = [[1, 2, 3], [7, 8, 9],
 
 let ids = [];
 function makeShape(e) {
+    let src = changeLanguage.getAttribute('src');
     const el = document.createElement("div");
-    if (start === "circle") {
+
+    if (start === "circle" || startBg === "кръг") {
         el.classList.add("circle");
         start = "cross";
-    } else if (start === "cross") {
+        startBg = "хикс";
+    } else if (start === "cross" || startBg === "хикс") {
         el.classList.add("cross");
         start = "circle";
+        startBg = "кръг";
     }
 
     e.target.append(el);
@@ -159,7 +169,13 @@ function makeShape(e) {
         if (!winner.classList.contains("hidden")) {
             info.innerText = ""
         } else {
-            info.innerText = `${start}'s turn`;
+            if (src === "flags/gb.png") {
+                info.innerText = `Ред на ${startBg}`;
+
+            } else {
+                info.innerText = `${start}'s turn`;
+
+            }
         }
     }
 
@@ -206,8 +222,13 @@ function checkWin(e) {
     // console.log(idsCircle);
     //console.log(idsCross);
 }
+let src = changeLanguage.getAttribute('src');
+if (src === "flags/gb.png") {
+    info.innerText = "Ред на кръг";
+} else {
+    info.innerText = "Circle's turn";
 
-info.innerText = "Circle's turn";
+}
 createBoard();
 const cellsElements = document.querySelectorAll(".cell");
 
@@ -218,7 +239,14 @@ function newGameF() {
     createBoard();
     ids = [];
     start = "circle";
-    info.innerText = "Circle's turn";
+    startBg = "кръг";
+    let src = changeLanguage.getAttribute('src');
+    if (src === "flags/gb.png") {
+        info.innerText = "Ред на кръг";
+    } else {
+        info.innerText = "Circle's turn";
+
+    }
 }
 
 function removeAllChildren(element) {
