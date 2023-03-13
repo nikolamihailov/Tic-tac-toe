@@ -398,6 +398,7 @@ button:active {
   }
 
   .rulesFeatures p {
+    text-align: justify;
     font-size: 12px;
     font-family: cursive;
     font-style: oblique;
