@@ -35,7 +35,7 @@ changeLanguage.addEventListener("click", () => {
     let src = (changeLanguage.src).substring(22);
     console.log(src);
     if (src === "flags/gb.png") {
-        changeLanguage.src = "./flags/bg.png";
+        changeLanguage.src = "flags/bg.png";
         newGame.innerText = "New game";
         clearScore.innerText = "Clear scores";
         gameHeading.innerHTML = "Tic tac toe <br>multiplayer";
@@ -66,7 +66,7 @@ changeLanguage.addEventListener("click", () => {
             <b>New game</b> - creates new game, the board is cleared.
         </p>`
     } else {
-        changeLanguage.src = "./flags/gb.png";
+        changeLanguage.src = "flags/gb.png";
         newGame.innerText = "Нова игра";
         clearScore.innerText = "Нулирай резултати";
         gameHeading.innerHTML = "Морски шах <br> за двама";
