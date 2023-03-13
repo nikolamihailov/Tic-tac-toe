@@ -238,8 +238,7 @@ button:active {
   color: black;
   text-align: justify;
   font-size: 14px;
-  font-family: cursive;
-  font-style: oblique;
+
 }
 
 
@@ -392,8 +391,7 @@ button:active {
     height: 610px;
     width: 320px;
     padding: 0 20px;
-    font-size: 13.5px;
-    text-align: justify;
+    font-size: 14px;
   }
 
   .showLegend h2 {
