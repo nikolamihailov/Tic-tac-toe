@@ -30,9 +30,10 @@ newGame.addEventListener("click", newGameF);
 legend.addEventListener("click", () => {
     legendInfo.classList.remove("hidden");
 });
+
 changeLanguage.addEventListener("click", () => {
     let src = (changeLanguage.src).substring(22);
-    console.log(oScore.innertext);
+    console.log(src);
     if (src === "flags/gb.png") {
         changeLanguage.src = "./flags/bg.png";
         newGame.innerText = "New game";
@@ -43,7 +44,7 @@ changeLanguage.addEventListener("click", () => {
         rulesAndFeatures.innerHTML = `
         <h2 style="text-decoration: underline; margin: 0;">RULES FOR TIC-TAC-TOE</h2>
         <p>
-            <b>1.</b> The game is played on a grid that's 3 squares by 3 squares.<br>
+            <b>1.</b>The game is played on a grid that's 3 squares by 3 squares.<br>
 
             <b>2.</b>You are O (red), your friend is X (blue). Players take turns putting their marks in empty
             squares.<br>
@@ -74,7 +75,7 @@ changeLanguage.addEventListener("click", () => {
         rulesAndFeatures.innerHTML = `
         <h2 style="text-decoration: underline; margin: 0;"> ПРАВИЛА ЗА МОРСКИ ШАХ</h2>
         <p>
-            <b>1.</b> Играта се играе на поле 3 на 3 квадратчета.<br>
+            <b>1.</b>Играта се играе на поле 3 на 3 квадратчета.<br>
 
             <b>2.</b>Единият игра е с O(червени), другият играч е с Х (сини). Ирачите се редуват, поставяйки своите фигури в квадратите.<br>
 
@@ -135,14 +136,24 @@ function makeShape(e) {
     e.target.append(el);
     checkWin(e);
     if (ids.length === 9 && !board.classList.contains("win")) {
-        if (!winner.classList.contains("hidden")) {
-            info.innerText = ""
+        let src = (changeLanguage.src).substring(22);
+        if (src === "flags/bg.png") {
+            if (!winner.classList.contains("hidden")) {
+                info.innerText = ""
+            } else {
+                winner.classList.remove("hidden");
+                winMessage.innerText = "Равенство!!!\n Никой не печели!";
+            }
         } else {
-            winner.classList.remove("hidden");
-            winMessage.innerText = "It's a draw !!!\n Nobody wins!";
-
-            //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
+            if (!winner.classList.contains("hidden")) {
+                info.innerText = ""
+            } else {
+                console.log(src);
+                winner.classList.remove("hidden");
+                winMessage.innerText = "It's a draw !!!\n Nobody wins!";
+            }
         }
+
     } else {
         if (!winner.classList.contains("hidden")) {
             info.innerText = ""
@@ -166,8 +177,12 @@ function checkWin(e) {
             && idsCircle.toString().includes(`${winCombo[2].toString()}`)) {
             //info.innerText = "Circle wins!!!";
             winner.classList.remove("hidden");
-            winMessage.innerText = "Circle wins !!! \n Congrats!";
-            //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
+            let src = (changeLanguage.src).substring(22);
+            if (src === "flags/gb.png") {
+                winMessage.innerText = "Кръговете печелят !!! \n Честито!";
+            } else {
+                winMessage.innerText = "Circle wins !!! \n Congrats!";
+            }
             board.classList.add("win");
             oScoreN++;
             oScore.innerText = oScoreN;
@@ -176,10 +191,13 @@ function checkWin(e) {
             && idsCross.toString().includes(`${winCombo[1].toString()}`)
             && idsCross.toString().includes(`${winCombo[2].toString()}`)) {
             board.classList.add("win");
-            //info.innerText = "Cross wins!!!";
             winner.classList.remove("hidden");
-            winMessage.innerText = "Cross wins !!!\n Congrats!";
-            //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
+            let src = (changeLanguage.src).substring(22);
+            if (src === "flags/gb.png") {
+                winMessage.innerText = "Хиксовете печелят !!! \n Честито!";
+            } else {
+                winMessage.innerText = "Cross wins !!! \n Congrats!";
+            }
             xScoreN++;
             xScore.innerText = xScoreN;
         }
@@ -191,7 +209,6 @@ function checkWin(e) {
 info.innerText = "Circle's turn";
 createBoard();
 const cellsElements = document.querySelectorAll(".cell");
-console.log(cellsElements);
 
 function newGameF() {
     winner.classList.add("hidden");
