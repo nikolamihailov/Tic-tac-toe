@@ -343,6 +343,7 @@ button:active {
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: 28px;
+    margin-bottom: 10px;
   }
 
   .board {
