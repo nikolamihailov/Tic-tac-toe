@@ -1,11 +1,19 @@
 const board = document.querySelector(".board");
+const gameHeading = document.getElementById("gameHeading");
 const info = document.querySelector(".info");
+const legend = document.getElementById("legendB");
+const legendInfo = document.getElementById("legendInfo");
+const rulesAndFeatures = document.querySelector(".rulesFeatures")
+const changeLanguage = document.getElementById("languageIcon");
 const newGame = document.getElementById("newGame");
 let xScore = document.getElementById("X");
 let oScore = document.getElementById("O");
+const winsO = document.querySelector(".scoreO");
+const winsX = document.querySelector(".scoreX");
 const clearScore = document.querySelector(".clearScore");
 const winner = document.querySelector(".popup");
-const closePopup = document.getElementById("close");
+const closePopup = document.getElementById("closePopup");
+const closeInfo = document.getElementById("closeInfo");
 const winMessage = document.getElementById("message");
 let xScoreN = Number(xScore.innerText);
 let oScoreN = Number(oScore.innerText);
@@ -19,10 +27,82 @@ clearScore.addEventListener("click", () => {
 
 newGame.addEventListener("click", newGameF);
 
+legend.addEventListener("click", () => {
+    legendInfo.classList.remove("hidden");
+});
+changeLanguage.addEventListener("click", () => {
+    let src = (changeLanguage.src).substring(22);
+    console.log(oScore.innertext);
+    if (src === "flags/gb.png") {
+        changeLanguage.src = "./flags/bg.png";
+        newGame.innerText = "New game";
+        clearScore.innerText = "Clear scores";
+        gameHeading.innerHTML = "Tic tac toe <br>multiplayer";
+        winsO.innerText = "O's wins:";
+        winsX.innerText = "X's wins:";
+        rulesAndFeatures.innerHTML = `
+        <h2 style="text-decoration: underline; margin: 0;">RULES FOR TIC-TAC-TOE</h2>
+        <p>
+            <b>1.</b> The game is played on a grid that's 3 squares by 3 squares.<br>
+
+            <b>2.</b>You are O (red), your friend is X (blue). Players take turns putting their marks in empty
+            squares.<br>
+
+            <b>3.</b>The first player to get 3 of the marks in a row (horizontal, vertical or diagonally) is the
+            winner.<br>
+
+            <b>4.</b>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in
+            a tie.
+            <br><br>
+        </p>
+        <h2 style="text-decoration: underline;margin: 0; text-transform: uppercase;">Game features</h2>
+        <p><b>Scores</b> - each player gets 1 point for every win. Loss and draw are both 0 points. <br>
+            <b>Clear scores</b> - sets the scores for both players to zero. <br>
+            <b>Info</b> - as you can already tell because you are reading this, shows games rules and the
+            features.
+            <br>
+            <b>Flags</b> - translates the whole game to bulgarian / english. <br>
+            <b>New game</b> - creates new game, the board is cleared.
+        </p>`
+    } else {
+        changeLanguage.src = "./flags/gb.png";
+        newGame.innerText = "Нова игра";
+        clearScore.innerText = "Нулирай резултати";
+        gameHeading.innerHTML = "Морски шах <br> за двама";
+        winsO.innerText = "O победи:";
+        winsX.innerText = "X победи:";
+        rulesAndFeatures.innerHTML = `
+        <h2 style="text-decoration: underline; margin: 0;"> ПРАВИЛА ЗА МОРСКИ ШАХ</h2>
+        <p>
+            <b>1.</b> Играта се играе на поле 3 на 3 квадратчета.<br>
+
+            <b>2.</b>Единият игра е с O(червени), другият играч е с Х (сини). Ирачите се редуват, поставяйки своите фигури в квадратите.<br>
+
+            <b>3.</b>Първият играч, който постави 3 еднакви фигури на ред, колона или диагонал, е победител.<br>
+
+            <b>4.</b>Когато всички 9 полета са пълни и никой няма 3 еднакви фигури на ред, колона или диагонал, има равенство.
+            <br><br>
+        </p>
+        <h2 style="text-decoration: underline;margin: 0; text-transform: uppercase;">Функции на играта</h2>
+        <p><b>Резултати</b> - всеки играч взима по 1 точка на победа. Равенство и загуба са по 0 точки. <br>
+            <b>Нулирай резултати</b> - нулира резултатите на дваматата играчи. <br>
+            <b>Инфо</b> - както може да предположите, тъй като четете това, показва правилата и функциите на играта.
+            <br>
+            <b>Флагове</b> - превежда цялата игра на български / английски. <br>
+            <b>Нова игра</b> - създава нова дъска, квадратите са празни.
+        </p>`
+    }
+
+})
 closePopup.addEventListener("click", () => {
     winner.classList.add("hidden");
-})
+});
+closeInfo.addEventListener("click", () => {
+    legendInfo.classList.add("closeLegend");
+    legendInfo.classList.add("hidden");
+});
 let cells = ["", "", "", "", "", "", "", "", ""];
+
 let start = "circle";
 function createBoard() {
     cells.forEach((value, index) => {
@@ -59,7 +139,7 @@ function makeShape(e) {
             info.innerText = ""
         } else {
             winner.classList.remove("hidden");
-            winMessage.innerText = "It's a draw!!!\n Nobody wins!";
+            winMessage.innerText = "It's a draw !!!\n Nobody wins!";
 
             //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
         }
@@ -86,7 +166,7 @@ function checkWin(e) {
             && idsCircle.toString().includes(`${winCombo[2].toString()}`)) {
             //info.innerText = "Circle wins!!!";
             winner.classList.remove("hidden");
-            winMessage.innerText = "Circle wins!!! \n Congrats!";
+            winMessage.innerText = "Circle wins !!! \n Congrats!";
             //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
             board.classList.add("win");
             oScoreN++;
@@ -98,7 +178,7 @@ function checkWin(e) {
             board.classList.add("win");
             //info.innerText = "Cross wins!!!";
             winner.classList.remove("hidden");
-            winMessage.innerText = "Cross wins!!!\n Congrats!";
+            winMessage.innerText = "Cross wins !!!\n Congrats!";
             //setInterval(() => { winner.innerHTML = ""; winner.classList.add("hidden") }, 3000);
             xScoreN++;
             xScore.innerText = xScoreN;

@@ -6,19 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic tac toe</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="popup hidden">
         <span id="message"></span>
-        <span id="close">X</span>
+        <span id="closePopup">X</span>
+    </div>
+    <div id="legendInfo" class="showLegend hidden">
+        <span id="closeInfo">X</span>
+        <div class="rulesFeatures">
+            <h2 style="text-decoration: underline; margin: 0;">RULES FOR TIC-TAC-TOE</h2>
+            <p>
+                <b>1.</b> The game is played on a grid that's 3 squares by 3 squares.<br>
+
+                <b>2.</b>You are O (red), your friend is X (blue). Players take turns putting their marks in empty
+                squares.<br>
+
+                <b>3.</b>The first player to get 3 of the marks in a row (horizontal, vertical or diagonally) is the
+                winner.<br>
+
+                <b>4.</b>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends
+                in
+                a tie.
+                <br><br>
+            </p>
+            <h2 style="text-decoration: underline;margin: 0; text-transform: uppercase;">Game features</h2>
+            <p><b>Scores</b> - each player gets 1 point for every win. Loss and draw are both 0 points. <br>
+                <b>Clear scores</b> - sets the scores for both players to zero. <br>
+                <b>Info</b> - as you can already tell because you are reading this, shows games rules and the
+                features.
+                <br>
+                <b>Flags</b> - translates the whole game to bulgarian / english. <br>
+                <b>New game</b> - creates new game, the board is cleared.
+            </p>
+        </div>
     </div>
     <div class="scores">
-        <div class="circleScore">O's wins: <span id="O">0</span> </div>
+        <div class="circleScore">
+            <span class="scoreO">O's wins:</span><span id="O">0</span>
+        </div>
         <button class="clearScore">Clear scores</button>
-        <div class="crossScore">X's wins: <span id="X">0</span></div>
+        <div class="crossScore">
+            <span class="scoreX">X's wins:</span><span id="X">0</span>
+        </div>
     </div>
-    <h1>Tic tac toe <br>multiplayer</h1>
+    <h1 id="gameHeading">Tic tac toe <br>multiplayer</h1>
+    <div class="infoAndLanguages">
+        <i class="fa-solid fa-circle-info" id="legendB"></i>
+        <div class="languages">
+            <img src="./flags/bg.png" alt="" id="languageIcon">
+        </div>
+    </div>
+
     <p class="info"></p>
     <div class="board"></div>
     <button id="newGame">New game</button>

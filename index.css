@@ -37,7 +37,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 100px;
+  width: 130px;
   border-radius: 10px;
   font-size: 19px;
 }
@@ -209,9 +209,110 @@ button:active {
   width: 300px;
   background: linear-gradient(to bottom, red, blue);
   border-radius: 20px;
+  animation-name: popOpen;
+  animation-duration: 1s;
 }
 
-.popup #close {
+.showLegend {
+  border: 8px solid rgb(255, 183, 0);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: black;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  height: 650px;
+  width: 410px;
+  padding: 0 50px;
+  background: whitesmoke;
+  border-radius: 30px;
+  animation-name: openLegend;
+  animation-duration: 1s;
+}
+
+.showLegend p {
+  color: black;
+  text-align: justify;
+  margin: 0;
+  font-size: 15px;
+  font-family: cursive;
+  font-style: oblique;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes popOpen {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes openLegend {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeLegend {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+
+.infoAndLanguages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.infoAndLanguages i {
+  cursor: pointer;
+  color: white;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.infoAndLanguages i:active {
+  scale: 0.95;
+}
+
+.infoAndLanguages img {
+  margin-top: 3px;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 24px;
+  width: 24px;
+}
+
+.infoAndLanguages img:active {
+  scale: 0.95;
+}
+
+.popup #closePopup {
   cursor: pointer;
   color: white;
   font-weight: bold;
@@ -221,11 +322,23 @@ button:active {
   height: 15px;
   width: 15px;
   font-size: 19px;
+  font-weight: bold;
 }
 
-.hidden {
-  display: none;
+.showLegend #closeInfo {
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  font-size: 24px;
+  font-weight: bold;
+
 }
+
 
 @media only screen and (max-width: 600px) {
   h1 {
@@ -269,11 +382,23 @@ button:active {
   .crossScore {
     font-size: 16px;
     height: 40px;
-    width: 90px;
+    width: 100px;
   }
 
   .info {
     font-size: 20px;
+  }
+
+  .showLegend {
+    height: 600px;
+    width: 310px;
+    padding: 0 20px;
+  }
+
+  .showLegend p {
+    font-size: 12px;
+    font-family: cursive;
+    font-style: oblique;
   }
 
   .popup {
