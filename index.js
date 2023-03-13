@@ -32,7 +32,8 @@ legend.addEventListener("click", () => {
 });
 
 changeLanguage.addEventListener("click", () => {
-    let src = (changeLanguage.src).substring(22);
+    //let src = (changeLanguage.src).substring(22);
+    let src = changeLanguage.getAttribute('src');
     console.log(src);
     if (src === "flags/gb.png") {
         changeLanguage.src = "flags/bg.png";
@@ -136,7 +137,7 @@ function makeShape(e) {
     e.target.append(el);
     checkWin(e);
     if (ids.length === 9 && !board.classList.contains("win")) {
-        let src = (changeLanguage.src).substring(22);
+        let src = changeLanguage.getAttribute('src');
         if (src === "flags/bg.png") {
             if (!winner.classList.contains("hidden")) {
                 info.innerText = ""
@@ -177,7 +178,7 @@ function checkWin(e) {
             && idsCircle.toString().includes(`${winCombo[2].toString()}`)) {
             //info.innerText = "Circle wins!!!";
             winner.classList.remove("hidden");
-            let src = (changeLanguage.src).substring(22);
+            let src = changeLanguage.getAttribute('src');
             if (src === "flags/gb.png") {
                 winMessage.innerText = "Кръговете печелят !!! \n Честито!";
             } else {
@@ -192,7 +193,7 @@ function checkWin(e) {
             && idsCross.toString().includes(`${winCombo[2].toString()}`)) {
             board.classList.add("win");
             winner.classList.remove("hidden");
-            let src = (changeLanguage.src).substring(22);
+            let src = changeLanguage.getAttribute('src');
             if (src === "flags/gb.png") {
                 winMessage.innerText = "Хиксовете печелят !!! \n Честито!";
             } else {
