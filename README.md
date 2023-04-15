@@ -1,1 +1,6 @@
-Try the game- https://nikolamihailov.github.io/Tic-tac-toe/
+# Tic Tac Toe Game
+
+ It has score system with clear results option, new game functionality, info with rules and features and languages option when you can switch to bulgarian and back to english. The design is made from scratch and it is responsive.
+ 
+ 
+Live demo:  https://nikolamihailov.github.io/Tic-tac-toe/
